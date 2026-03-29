@@ -8,9 +8,9 @@ kernel = np.array([[1,1,1],
                 [1,1,1],
                 [1,1,1]]) / 9
 
-kernel2 = np.array([[-1, -1, -1],
-                    [-1,  8, -1],
-                    [-1, -1, -1]])
+kernel2 = np.array([[-1, 1, -1],
+                    [1,  4, 1],
+                    [-1, 1, -1]])
 
 pygame.init()
 main_screen = pygame.display.set_mode((1220,640))
