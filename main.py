@@ -4,7 +4,10 @@ import vars
 from vars import *
 
 pygame.init()
-screen = pygame.display.set_mode(vars.screen_size)
+main_screen = pygame.display.set_mode((900,640))
+panel = pygame.Surface((260,640))
+screen = pygame.Surface(vars.screen_size)
+font = pygame.font.SysFont('Monospace',24)
 running = True
 
 FPS = 60
@@ -18,7 +21,13 @@ def generate_space():
     small_surf = pygame.surfarray.make_surface(rgb_array)
     return pygame.transform.scale(small_surf, screen_size, screen)
 
+panel.fill((150,150,150))
+
 while running:
+    clock.tick(FPS)
+
+    text_surf = font.render(f"FPS:{clock.get_fps():.2f}", True, (10,50,150))
+    # pygame.display.set_caption(f"{clock.get_fps():.2f}")
 
     for event in pygame.event.get():
     
@@ -27,6 +36,10 @@ while running:
     
         elif event.type == pygame.KEYDOWN:
             generate_space()
+
+    main_screen.blit(panel,(0,0))
+    main_screen.blit(screen,(260,0))
+    main_screen.blit(text_surf,(10,10))
 
     pygame.display.flip()
 
