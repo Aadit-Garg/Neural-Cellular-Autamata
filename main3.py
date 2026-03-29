@@ -23,7 +23,7 @@ def generate_space():
     return base
 
 def get_neighbour(base,x,y):
-    padding_grid = np.pad(base, pad_width=1, model = 'wrap')
+    padding_grid = np.pad(base, pad_width=1, mode = 'wrap')
     patch = padding_grid[x:x+3,y:y+3]
     vector = patch.flatten()
     return vector
